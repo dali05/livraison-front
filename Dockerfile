@@ -1,9 +1,9 @@
 FROM nginx:alpine
 
-# Copier les fichiers Angular générés
-COPY ./dist/livraison-front /usr/share/nginx/html
+# Copier les fichiers Angular générés depuis "browser/"
+COPY ./dist/livraison-front/browser /usr/share/nginx/html
 
-# Copier le fichier de configuration NGINX depuis la racine du projet
+# Copier la configuration NGINX
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exposer le port 4200
