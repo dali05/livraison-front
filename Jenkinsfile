@@ -26,11 +26,7 @@ pipeline {
             }
         }
 
-       stage('Install Node.js and Angular CLI') {
-                steps {
-                    sh 'sudo npm install -g @angular/cli'
-                }
-            }
+
 
         stage("Build Angular Application") {
             steps {
