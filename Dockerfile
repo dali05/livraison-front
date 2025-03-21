@@ -1,5 +1,8 @@
 FROM nginx:alpine
 
+# Installer OpenSSL
+RUN apk update && apk add --no-cache openssl
+
 # Créer les certificats SSL
 RUN mkdir -p /etc/ssl/certs /etc/ssl/private && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
