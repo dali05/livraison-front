@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JourLivraison } from '../models/jour-livraison.model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CreneauService {
-  private apiUrl = 'http://localhost:8085/creneaux';
+  private apiUrl = environment.apiUrl+'/creneaux';
 
   constructor(private http: HttpClient) {}
 
