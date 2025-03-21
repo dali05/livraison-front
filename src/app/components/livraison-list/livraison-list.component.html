@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Liste des Livraisons</h2>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Mode de Livraison</th>
+      <th>Créneau</th>
+      <th>Produits</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let livraison of livraisons">
+      <td>{{ livraison.id }}</td>
+      <td>{{ livraison.modeLivraison || 'Non défini' }}</td>
+      <td>{{ livraison.creneauHoraire?.heure || 'Non défini' }}</td>
+      <td>{{ getProduitNoms(livraison.produits) }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

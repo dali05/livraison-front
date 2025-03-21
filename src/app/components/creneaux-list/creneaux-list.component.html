@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>Créer une Livraison</h2>
+
+  <!-- ✅ Sélection de produits -->
+  <div class="form-group">
+    <label for="produits">Choisir les Produits :</label>
+    <div *ngFor="let produit of produits" class="form-check">
+      <input type="checkbox"
+             class="form-check-input"
+             [checked]="selectedProduits.includes(produit.nom)"
+             (change)="onProductChange($event, produit.nom)">
+      <label class="form-check-label">{{ produit.nom }}</label>
+    </div>
+  </div>
+
+  <button class="btn btn-success mt-3" (click)="createLivraison()">Créer Livraison</button>
+
+  <div class="alert alert-info mt-3" *ngIf="message">{{ message }}</div>
+
+  <div *ngIf="livraison">
+
+    <h3>Choisir Mode de Livraison</h3>
+    <div class="form-group">
+      <select class="form-control" [(ngModel)]="modeLivraison">
+        <option value="">-- Sélectionner --</option>
+        <option *ngFor="let mode of modes" [value]="mode">{{ mode }}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary mt-2" (click)="choisirModeLivraison()">Valider Mode Livraison</button>
+
+    <div *ngIf="jours.length > 0" class="mt-4">
+      <h3>Choisir un Créneau</h3>
+      <div *ngFor="let jour of jours" class="mb-3">
+        <h4>{{ jour.date }}</h4>
+        <div class="btn-group">
+          <button style="margin-right: 20px" *ngFor="let creneau of jour.creneaux"
+                  class="btn"
+                  [ngClass]="creneau.disponible ? 'btn-primary' : 'btn-secondary'"
+                  [disabled]="!creneau.disponible"
+                  (click)="reserverCreneau(creneau.id)">
+            {{ creneau.heure }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3" *ngIf="messageCreneau">{{ messageCreneau }}</div>
+  </div>
+</div>

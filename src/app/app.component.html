@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gestion Livraison</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/livraisons" routerLinkActive="active">Livraisons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/creneaux" routerLinkActive="active">Créneaux Disponibles</a>
+      </li>
+        <li class="nav-item">
+        <a *ngIf="isAdmin" class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+      </li>
+    </ul>
+  </div>
+
+    <div>
+      <button style="position: relative;right: 32px;" class="nav-link" (click)="logout()" routerLinkActive="active">LogOut</button>
+    </div>
+
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
