@@ -28,14 +28,14 @@ pipeline {
 
        stage('Install Node.js and Angular CLI') {
                 steps {
-                    sh 'npm install -g @angular/cli'
+                    sh 'sudo npm install -g @angular/cli'
                 }
             }
 
         stage("Build Angular Application") {
             steps {
-                sh 'npm install'
-                sh 'ng build --configuration=production'
+                sh 'sudo npm install'
+                sh 'sudo ng build --configuration=production'
             }
         }
 
