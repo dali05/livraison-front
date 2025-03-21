@@ -4,6 +4,6 @@
   env: { DEBUG: undefined },
 };
 
-if (!(window as any).crypto) {
-  (window as any).crypto = require('crypto-browserify');
+if (!window.crypto) {
+  console.warn("L'API Web Crypto n'est pas disponible dans ce navigateur.");
 }
