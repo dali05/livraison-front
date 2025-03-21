@@ -5,7 +5,7 @@ pipeline {
         maven 'Maven3'
     }
     environment {
-        APP_NAME = "angular-app"
+        APP_NAME = "livraison-front-app"
         RELEASE = "1.0.0"
         DOCKER_USER = "dali05"
         DOCKER_PASS = credentials("dockerhub")
