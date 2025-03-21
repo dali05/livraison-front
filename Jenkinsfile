@@ -5,7 +5,7 @@ pipeline {
         maven 'Maven3'
     }
     environment {
-        APP_NAME = "livraison-front"
+        APP_NAME = "livraison-back-pipeline"
         RELEASE = "1.0.0"
         DOCKER_USER = "dali05"
         DOCKER_PASS = credentials("dockerhub")
@@ -50,7 +50,15 @@ pipeline {
                 }
             }
         }
+   stage("Trivy Scan") {
+                           steps {
+                               script {
 
+                                     sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image dali05/livraison-front-pipeline:latest --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
+
+                               }
+                           }
+                 }
 
 
         stage("Cleanup Docker Images") {
