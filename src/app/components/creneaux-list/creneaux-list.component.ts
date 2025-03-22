@@ -72,7 +72,6 @@ export class CreneauxListComponent implements OnInit {
   loadCreneaux() {
     this.creneauService.getDatesDisponibles(this.modeLivraison).subscribe(data =>
       this.jours = data);
-    this.router.navigate(['/livraisons']);
   }
 
   reserverCreneau(creneauId: number) {
@@ -80,6 +79,7 @@ export class CreneauxListComponent implements OnInit {
     this.livraisonService.choisirCreneau(this.livraison.id, creneauId).subscribe({
       next: res => {
         this.messageCreneau = 'Créneau réservé avec succès !';
+        this.router.navigate(['/livraisons']);
         this.loadCreneaux();
       },
       error: err => {
