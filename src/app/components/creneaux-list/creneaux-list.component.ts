@@ -4,6 +4,7 @@ import { LivraisonService } from '../../services/livraison.service';
 import { JourLivraison } from '../../models/jour-livraison.model';
 import {Livraison} from '../../models/livraison.model';
 import {ProduitService} from '../../services/produit.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-creneaux-list',
@@ -27,7 +28,8 @@ export class CreneauxListComponent implements OnInit {
   constructor(
     private produitService: ProduitService,
     private livraisonService: LivraisonService,
-    private creneauService: CreneauService
+    private creneauService: CreneauService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +70,9 @@ export class CreneauxListComponent implements OnInit {
   }
 
   loadCreneaux() {
-    this.creneauService.getDatesDisponibles(this.modeLivraison).subscribe(data => this.jours = data);
+    this.creneauService.getDatesDisponibles(this.modeLivraison).subscribe(data =>
+      this.jours = data);
+    this.router.navigate(['/livraisons']);
   }
 
   reserverCreneau(creneauId: number) {
